@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Crystals Collector!</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+    <script type="text/javascript" src="assets/javascript/game.js">
+    </script>
+</head>
+<body>
+<div id='container'>
+    <div id='parentTitleBox'>
+        <div class='titleBox'>CrystalCollectors</div>
+    </div>
+
+    <div id="instructionBox">
+            <p>Instructions:</p>
+            <p class"instruction">You will be given random numbers at the start of the game.</p>
+            <p class"instruction">There are four crystals below.  By clicking on a crystal you will add a specific about of points to you total score.</p>
+            <p class"instruction">You win the game by matching your total score to random number, you lose the game if your total score coes above the random number.</p>
+            <p class"instruction">The value of each crystal is hidden from you until you click on it.</p>
+            <p class"instruction">Each time when the game starts, the game will change the values of each crystal.</p>
+
+
+        </div>
+    
+    <div id='parentRanWLBox'>
+            <div class="ranNumBox">
+                
+                </div>
+                <div class="winLoseBox">
+                    <p>Wins: </p>
+                        <p class"win">0</p>
+                    <p>Loses: </p>
+                        <p class"loss">0</p>
+            </div>
+        </div>
+
+    <div id="parentGameButtons">
+            <div  class="box" value='1'>
+                <img src="C:\Users\Teacher\Google Drive\UCLA CODING\Homeworks\Week 4\week-4-game\assets\images\red-jewel.jpg">
+            </div>
+    
+            <div  class="box" value='2'>
+                    <img src="C:\Users\Teacher\Google Drive\UCLA CODING\Homeworks\Week 4\week-4-game\assets\images\blue-jewel.jpg">
+            </div>
+    
+            <div  class="box" value='3'>
+                    <img src="C:\Users\Teacher\Google Drive\UCLA CODING\Homeworks\Week 4\week-4-game\assets\images\yellow-jewel.jpeg">
+            </div>
+            
+            <div  class="box" value='4'>
+                    <img src="C:\Users\Teacher\Google Drive\UCLA CODING\Homeworks\Week 4\week-4-game\assets\images\green-jewel.jpg">
+            </div>
+    
+    </div>
+
+
+
+
+    <div id="parentScore">
+            <div class="score">
+                <p>Your total score is: </p>
+            </div>
+    
+            <div class="scoreDisplay">
+                <p class=scoreDisplayChild></p>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+    
+
+
+
+    var crys1 = Math.floor(Math.random() * (12 - 1) + 1);
+    var crys2 = Math.floor(Math.random() * (12 - 1) + 1);
+    var crys3 = Math.floor(Math.random() * (12 - 1) + 1);
+    var crys4 = Math.floor(Math.random() * (12 - 1) + 1);
+    
+
+
+    var win = 0;
+    var loss = 0;
+    var finalScore;
+
+
+
+        function reset()
+        {
+
+            randNum = Math.floor(Math.random() + (120 - 19) + 19);
+            console.log('randomNumber = ' + randNum);
+            crys1 = Math.floor(Math.random() * (12 - 1) + 1);
+            crys2 = Math.floor(Math.random() * (12 - 1) + 1);
+            crys3 = Math.floor(Math.random() * (12 - 1) + 1);
+            crys4 = Math.floor(Math.random() * (12 - 1) + 1);
+            finalScore = 0;
+
+
+            $(‘.ranNumBox’).html(randNum);
+            $(‘.scoreDisplayChild’).html(finalScore);
+            start();
+    }
+
+    function start()
+    {
+
+            randNum = Math.floor(Math.random() + (120 - 19) + 19);
+            console.log('randomNumber = ' + randNum);
+            crys1 = Math.floor(Math.random() * (12 - 1) + 1);
+            crys2 = Math.floor(Math.random() * (12 - 1) + 1);
+            crys3 = Math.floor(Math.random() * (12 - 1) + 1);
+            crys4 = Math.floor(Math.random() * (12 - 1) + 1);
+            finalScore = 0;
+
+
+            $(‘.ranNumBox’).html(randNum);
+            $(‘.scoreDisplayChild’).html(finalScore);
+            
+
+
+
+            $('.crystal1').attr("value", crys1);
+            var test = $('crystal1').attr("value");
+
+            console.log('crystal 1  '+test);
+
+            $('.crystal2').attr("value", crys2);
+            var test = $('crystal2').attr("value");
+
+            console.log('crystal 2  '+test);     
+
+            $('.crystal3').attr("value", crys3);
+            var test = $('crystal3').attr("value");
+
+            console.log('crystal 3  '+test); 
+
+            $('.crystal4').attr("value", crys4);
+            var test = $('crystal4').attr("value");
+
+            console.log('crystal 4  '+test); 
+    
+
+            $('.box').on('click', function()
+
+            var test1 = $(this).attr('value')
+
+            finalScore = parseInt(finalScore) + parseInt(test1
+            console.log('Crystal' + test1)
+            console.log('finalScore===  ' + finalScore);
+            $(‘.scoreDisplayChild’).html(finalScore);
+
+                if(randNum === finalScore)
+            {
+                alert(‘win’);
+                win++;
+                $(‘.win’).html(win);
+                $(‘.scoreDisplayChild’).html(0)
+                reset();
+            }
+            else if (finalScore > randNum)
+            {
+                alert (‘loser’);
+                loss++;
+                $(‘.loss’).html(loss);
+                $(‘.scoreDisplayChild’).html(0);
+                reset();
+            }
+
+        });
+
+}
+     
+
+
+start();
+
+</script>
+</body>
+
+</html>
